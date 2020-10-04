@@ -31,6 +31,15 @@ class App extends Component {
       console.log('[App.js] componentDidMount');
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+      console.log('[App.js] shouldComponentUpdate');
+      return true;
+  }
+
+    componentDidUpdate() {
+      console.log('[App.js] componentDidUpdate');
+  }
+
     nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
@@ -67,10 +76,13 @@ class App extends Component {
     let persons = null;
 
     if (this.state.showPersons) {
-      persons = <Persons
+      persons = (
+          <Persons
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
-          changed={this.nameChangedHandler}/>;
+          changed={this.nameChangedHandler}
+          />
+          );
     }
 
     return (
