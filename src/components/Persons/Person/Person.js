@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './Person.css';
 import withClass from "../../../hoc/withClass";
@@ -12,10 +13,17 @@ class Person extends Component{
             I'm {this.props.name} and I am {this.props.age} years old!
         </p>,
         <p key="i2">{this.props.children}</p>,
-        <input type="text" onChange={this.props.changed} value={this.props.name} />
+        <input key="i3" type="text" onChange={this.props.changed} value={this.props.name} />
     </Fragment>
     );
     }
 }
+
+Person.protoTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func
+};
 
 export default withClass(Person, classes.Person);
